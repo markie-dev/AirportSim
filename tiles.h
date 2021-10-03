@@ -6,7 +6,7 @@ class tiles{
     private:
         int tilecnt;
 
-        typedef vector<tile*> tiles_;
+        typedef vector<tile> tiles_;
         tiles_ tileList;
         
     public:
