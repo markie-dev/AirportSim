@@ -4,27 +4,26 @@ using namespace std;
 
 class tiles{
     private:
-        int tilecnt;
-
-        typedef vector<tile> tiles_;
-        tiles_ tileList;
+        //create tile vector
+        vector< vector<tile> > tileList;
+        
         
     public:
-        tiles() {tilecnt=0;}
-
-        int getCnt();
-
-        void cntInc();
-        void cntDec();
+        tiles()  { }
+        ~tiles() { tileList.clear(); }
 
         void loadTiles(string);
-        void editTile(int);
-        
-        void cleanup();
-        void prtlist();
-        void loadItems();
-        void storeItems();
-
         void regionPrint();
-        
+
+        bool runSim(int, int);
+        void updateSim(vector< vector<tile> >);
+        int updateWorkers();
+        int updateGoods();
+        void printPopTotal();
+        void printPollutionMap();
+        void requestedArea();
+
+        //Will use the vector of tiles to assign the vector pointers to adjacent tiles
+        void assignPointers();
+        int getValidInput(int, int, int);
 };

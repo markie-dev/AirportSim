@@ -1,25 +1,34 @@
-#include <iostream>
 #include "readin.h"
 #include "tiles.h"
 using namespace std;
 
 int main(){
-    int a, b;
-    string c;
+    int timeLimit, refreshRate;
+    string mapFileName;
 
+    //initialize tiles instance
     tiles tileMap;
 
-    readConfig(&a, &b, &c);
-
-    cout << "\nRegion Map: " << c << endl;
-    cout << "Time Limit: " << a << endl;
-    cout << "Refresh Rate: " << b << endl;
+    //read config and get variables from config
+    readConfig(&timeLimit, &refreshRate, &mapFileName);
     
-    tileMap.loadTiles(c);
-    //tileMap.prtlist();
+    //read in region file
+    tileMap.loadTiles(mapFileName);
+    //print initial region file
+    tileMap.assignPointers();
+
     cout << "\nInitial Zone State\n";
     tileMap.regionPrint();
-    tileMap.cleanup();
+
+    if(tileMap.runSim(timeLimit, refreshRate) == false){
+       cout << "\n\nFinal Region State: " << endl; 
+       tileMap.regionPrint();
+       tileMap.printPollutionMap();
+       tileMap.printPopTotal();
+       tileMap.requestedArea();
+    }
+
+    cout << "Simulation Complete!\n";
 
     return 0;
 }
