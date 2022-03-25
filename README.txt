@@ -1,4 +1,4 @@
-Names: Marcus Ellison, (John) Marshall Turner, John Whitgrove, Samrajya Prasai
+Names: Marcus Ellison, (John) Marshall ------, John ---------, Samrajya ------
 
 Instructions for Compiling:
 	To compile the files, we used a makefile. The makefile may not work if you aren't on linux.
